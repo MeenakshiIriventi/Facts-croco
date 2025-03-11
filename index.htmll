@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            background-color: #e0f7e0; /* Light green background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2e7d32; /* Dark green */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            transition: opacity 0.5s ease;
+        }
+
+        button {
+            background-color: #4caf50; /* Green button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #388e3c; /* Darker green on hover */
+        }
+
+        .icons {
+            margin: 20px 0;
+        }
+
+        .icon {
+            width: 50px;
+            height: auto;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <p id="fact"></p>
+        <div class="icons">
+            <img src="crocodile-icon.png" alt="Crocodile Icon" class="icon">
+            <!-- Add more icons as needed -->
+        </div>
+        <button id="randomFactBtn">Show Random Fact</button>
+        <button id="twitterShareBtn">Share on Twitter</button>
+    </div>
+    <script>
+        const facts = [
+            "Crocodiles can hold their breath for over an hour when submerged underwater, allowing them to stay hidden from prey.",
+            "They have the strongest bite of any animal in the world, with a bite force that can exceed 3,700 pounds per square inch.",
+            "Crocodiles are ancient reptiles, having existed for over 200 million years, which means they were around during the time of the dinosaurs.",
+            "They can live for a long time, with some species reaching ages of over 70 years in the wild.",
+            "Crocodiles are cold-blooded, which means they rely on external temperatures to regulate their body heat.",
+            "They have excellent night vision, allowing them to hunt effectively in low-light conditions.",
+            "Crocodiles can swim at speeds of up to 20 miles per hour in short bursts, making them formidable hunters in the water.",
+            "Their skin is covered in tough, scaly armor, which provides protection from predators and environmental hazards.",
+            "Crocodiles communicate using a variety of sounds, including growls, hisses, and even bellows, especially during mating season.",
+            "They are opportunistic feeders, meaning they will eat whatever is available, including fish, birds, and even larger mammals.",
+            "Crocodiles can go for long periods without eating, sometimes fasting for months if food is scarce.",
+            "They have a unique way of swallowing food, using their throat muscles to push prey down their throat, as they cannot chew.",
+            "Crocodiles are known to exhibit parental care, with mothers guarding their nests and helping hatchlings reach the water.",
+            "There are 15 recognized species of crocodiles, each adapted to different environments and climates around the world.",
+            "Crocodiles can be found in a variety of habitats, including rivers, lakes, wetlands, and even saltwater environments."
+        ];
+
+        document.getElementById('randomFactBtn').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factElement = document.getElementById('fact');
+            factElement.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                factElement.textContent = facts[randomIndex];
+                factElement.style.opacity = 1; // Fade in
+            }, 500);
+        });
+
+        document.getElementById('twitterShareBtn').addEventListener('click', function() {
+            const fact = document.getElementById('fact').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
